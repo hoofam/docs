@@ -1,0 +1,41 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+// 링크: 기본 파란 글자 위로 초록·보라 빛이 왼쪽에서 오른쪽으로 슥 지나간다
+$link-base: #0366d6;
+$glow-green: #1fbf8f;
+$glow-purple: #8b5cf6;
+
+.markdown-body a {
+  color: transparent;
+  background-image: linear-gradient(
+    110deg,
+    $link-base 0%,
+    $link-base 38%,
+    $glow-green 46%,
+    $glow-purple 54%,
+    $link-base 62%,
+    $link-base 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-decoration-color: $link-base;
+  animation: hoofam-glow 3.2s ease-in-out infinite;
+}
+
+// 앞 60% 동안 빛이 지나가고 나머지는 쉰다
+@keyframes hoofam-glow {
+  0% { background-position: 100% 0; }
+  60%, 100% { background-position: 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .markdown-body a {
+    animation: none;
+    color: $link-base;
+    background-image: none;
+  }
+}
