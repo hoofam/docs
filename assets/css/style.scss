@@ -3,12 +3,12 @@
 
 @import "{{ site.theme }}";
 
-// hoofam 제목: 흰 글자 위로 초록·보라 빛이 왼쪽에서 오른쪽으로 끊김 없이 흐른다
+// hoofam title: a green and purple glow flows seamlessly from left to right over white text
 $title-base: #ffffff;
 $glow-green: #1fbf8f;
 $glow-purple: #8b5cf6;
 
-// 글자 폭의 두 배인 무늬를 가로로 이어 붙이고, 처음과 끝 색을 같게 해 이음매가 없다
+// The gradient is twice the text width and repeats horizontally. Its first and last colors match, so there is no seam
 .hoofam-glow {
   color: transparent;
   background-image: linear-gradient(
@@ -27,13 +27,13 @@ $glow-purple: #8b5cf6;
   animation: hoofam-glow 3.2s linear infinite;
 }
 
-// 무늬 한 칸(글자 폭의 두 배)만큼 일정한 속도로 밀어 마지막 장면이 첫 장면과 같다
+// Shift by exactly one tile (twice the text width) at a constant speed, so the last frame matches the first
 @keyframes hoofam-glow {
   from { background-position: 200% 0; }
   to { background-position: 0% 0; }
 }
 
-// 움직임 줄이기에서는 빛이 지나가지 않아 흰 글자가 보이지 않으므로 초록으로 멈춰 둔다
+// With Reduce Motion the glow never passes and the white text would not show, so keep it a static green instead
 @media (prefers-reduced-motion: reduce) {
   .hoofam-glow {
     animation: none;
