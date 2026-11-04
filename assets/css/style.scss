@@ -3,13 +3,15 @@
 
 @import "{{ site.theme }}";
 
-// hoofam title: a green and purple glow flows seamlessly from left to right over white text
+// hoofam title: a green and purple glow flows seamlessly from left to right over white text.
+// It is used on the index page title and on the theme's "hoofam" link at the top of every other page.
 $title-base: #ffffff;
 $glow-green: #1fbf8f;
 $glow-purple: #8b5cf6;
 
 // The gradient is twice the text width and repeats horizontally. Its first and last colors match, so there is no seam
-.hoofam-glow {
+.hoofam-glow,
+.markdown-body > h1:first-child > a {
   color: transparent;
   background-image: linear-gradient(
     90deg,
@@ -24,6 +26,7 @@ $glow-purple: #8b5cf6;
   background-repeat: repeat-x;
   -webkit-background-clip: text;
   background-clip: text;
+  text-decoration-color: $title-base;
   animation: hoofam-glow 3.2s linear infinite;
 }
 
@@ -35,9 +38,11 @@ $glow-purple: #8b5cf6;
 
 // With Reduce Motion the glow never passes and the white text would not show, so keep it a static green instead
 @media (prefers-reduced-motion: reduce) {
-  .hoofam-glow {
+  .hoofam-glow,
+  .markdown-body > h1:first-child > a {
     animation: none;
     color: $glow-green;
     background-image: none;
+    text-decoration-color: $glow-green;
   }
 }
