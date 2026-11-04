@@ -3,8 +3,8 @@
 
 @import "{{ site.theme }}";
 
-// 링크: 기본 파란 글자 위로 초록·보라 빛이 왼쪽에서 오른쪽으로 슥 지나간다
-$link-base: #0366d6;
+// 링크: 기본 흰 글자 위로 초록·보라 빛이 왼쪽에서 오른쪽으로 슥 지나간다
+$link-base: #ffffff;
 $glow-green: #1fbf8f;
 $glow-purple: #8b5cf6;
 
@@ -32,10 +32,12 @@ $glow-purple: #8b5cf6;
   60%, 100% { background-position: 0 0; }
 }
 
+// 움직임 줄이기에서는 빛이 지나가지 않아 흰 링크가 보이지 않으므로 초록으로 멈춰 둔다
 @media (prefers-reduced-motion: reduce) {
   .markdown-body a {
     animation: none;
-    color: $link-base;
+    color: $glow-green;
     background-image: none;
+    text-decoration-color: $glow-green;
   }
 }
