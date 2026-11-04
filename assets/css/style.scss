@@ -3,33 +3,35 @@
 
 @import "{{ site.theme }}";
 
-// 링크: 기본 흰 글자 위로 초록·보라 빛이 왼쪽에서 오른쪽으로 슥 지나간다
+// 링크: 흰 글자 위로 초록·보라 빛이 왼쪽에서 오른쪽으로 끊김 없이 흐른다
 $link-base: #ffffff;
 $glow-green: #1fbf8f;
 $glow-purple: #8b5cf6;
 
+// 링크 폭의 두 배인 무늬를 가로로 이어 붙이고, 처음과 끝 색을 같게 해 이음매가 없다
 .markdown-body a {
   color: transparent;
   background-image: linear-gradient(
-    110deg,
+    90deg,
     $link-base 0%,
-    $link-base 38%,
-    $glow-green 46%,
-    $glow-purple 54%,
-    $link-base 62%,
+    $link-base 15%,
+    $glow-green 40%,
+    $glow-purple 60%,
+    $link-base 85%,
     $link-base 100%
   );
-  background-size: 250% 100%;
+  background-size: 200% 100%;
+  background-repeat: repeat-x;
   -webkit-background-clip: text;
   background-clip: text;
   text-decoration-color: $link-base;
-  animation: hoofam-glow 3.2s ease-in-out infinite;
+  animation: hoofam-glow 3.2s linear infinite;
 }
 
-// 앞 60% 동안 빛이 지나가고 나머지는 쉰다
+// 무늬 한 칸(링크 폭의 두 배)만큼 일정한 속도로 밀어 마지막 장면이 첫 장면과 같다
 @keyframes hoofam-glow {
-  0% { background-position: 100% 0; }
-  60%, 100% { background-position: 0 0; }
+  from { background-position: 200% 0; }
+  to { background-position: 0% 0; }
 }
 
 // 움직임 줄이기에서는 빛이 지나가지 않아 흰 링크가 보이지 않으므로 초록으로 멈춰 둔다
